@@ -1,13 +1,13 @@
 import React from 'react';
 import LibrarySong from './LibrarySong';
 
-const Library = ({ songs, setCurrentSong, isPlaying, audioRef }) => {
+const Library = ({ songs, setCurrentSong, setSongs, isPlaying, audioRef, libraryStatus }) => {
     return (
-        <div className='library'>
+        <div className={`library ${libraryStatus ? 'active-library' : ''}`}>
             <h2>Library</h2>
             <div className='library-songs'>
                 {songs.map((song) => (
-                    <LibrarySong song={song} setCurrentSong={setCurrentSong} audioRef={audioRef} isPlaying={isPlaying} key={song.id} />
+                    <LibrarySong song={song} songs={songs} setCurrentSong={setCurrentSong} setSongs={setSongs} audioRef={audioRef} isPlaying={isPlaying} key={song.id} />
                 ))}
             </div>
         </div>
